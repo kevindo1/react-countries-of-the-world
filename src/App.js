@@ -44,6 +44,7 @@ function App() {
       </select>
       {filterCountries().map((country) => (
         <p key={country.id}>
+          <img src={`https://flagcdn.com/16x12/${country.iso2.toLowerCase()}.png`} />
           {country.name} : {country.continent}{' '}
         </p>
       ))}
