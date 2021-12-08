@@ -7,6 +7,10 @@ function App() {
   const [query, setQuery] = useState('');
   const [continent, setContinent] = useState('All');
 
+  function handleClick() {
+    countries.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCountries();
@@ -41,7 +45,11 @@ function App() {
         <option value="Africa">Africa</option>
         <option value="Europe">Europe</option>
         <option value="Oceania">Oceania</option>
+        <option value="Antarctica">Antarctica</option>
       </select>
+      <button className="btn" onClick={handleClick}>
+        Sort A to Z
+      </button>
       {filterCountries().map((country) => (
         <p key={country.id}>
           <img src={`https://flagcdn.com/16x12/${country.iso2.toLowerCase()}.png`} />
